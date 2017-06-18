@@ -5,8 +5,10 @@
 ### Database
 1. Installer postgresql
 2. `psql postgres`
-4. `CREATE USER sommerjobber WITH PASSWORD 'secret'`
-3. `CREATE DATABASE sommerjobb2017 OWNER sommerjobber`
+3. `CREATE USER sommerjobber WITH PASSWORD 'secret'`
+4. `CREATE DATABASE sommerjobb2017 OWNER sommerjobber`
+5. `CREATE USER oauth WITH PASSWORD 'secret'`
+6. `CREATE DATABASE oauth OWNER oauth`
 
 ### Installasjon
 1. `mvn clean install`
