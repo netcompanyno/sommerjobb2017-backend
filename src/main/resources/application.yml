@@ -1,3 +1,0 @@
-spring.datasource.url: jdbc:postgresql://localhost:5432/sommerjobb2017
-spring.datasource.username: sommerjobber
-spring.datasource.password: secret

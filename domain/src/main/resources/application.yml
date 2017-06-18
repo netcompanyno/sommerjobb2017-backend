@@ -1,0 +1,14 @@
+spring.datasource.url: jdbc:postgresql://localhost:5432/sommerjobb2017
+spring.datasource.username: sommerjobber
+spring.datasource.password: secret
+
+security.oauth2:
+  resource.jwt.key-uri: http://localhost:8090/oauth/token_key
+  client:
+    client-id: domain
+    client-secret: secret
+    access-token-uri: http://localhost:8090/oauth/token
+    user-authorization-uri: http://localhost:8090/oauth/authorize
+
+server.context-path: /api
+

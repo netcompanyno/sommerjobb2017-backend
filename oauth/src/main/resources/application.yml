@@ -1,0 +1,21 @@
+spring.datasource.url: jdbc:postgresql://localhost:5432/oauth
+spring.datasource.username: oauth
+spring.datasource.password: secret
+
+keystore.password: mySecretKey
+
+server.port: 8090
+
+security:
+  oauth2:
+    client:
+      client-id: domain
+      client-secret: secret
+      scope: read
+      auto-approve-scopes: '.*'
+      authorized-grant-types: authorization_code,refresh_token
+    authorization:
+      token-key-access: permitAll()
+      check-token-access: isAuthenticated()
+
+

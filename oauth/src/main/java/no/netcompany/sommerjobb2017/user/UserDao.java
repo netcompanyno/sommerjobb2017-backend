@@ -38,11 +38,11 @@ public class UserDao {
                                 .build()));
     }
 
-    public void changePassword(final int id, final String newPasswordHash) {
+    public void changePassword(final String email, final String newPasswordHash) {
         namedTemplate.update(
-                "UPDATE \"user\" SET password_hash = :password_hash WHERE id = :id",
+                "UPDATE \"user\" SET password_hash = :password_hash WHERE email = :email",
                 new MapSqlParameterSource()
                         .addValue("password_hash", newPasswordHash)
-                        .addValue("id", id));
+                        .addValue("email", email));
     }
 }
