@@ -1,11 +1,10 @@
 package no.netcompany.sommerjobb2017.secret;
 
-import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
+import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
 import java.util.Objects;
 
 @RestController
@@ -20,8 +19,9 @@ public class SecretRest {
 
     @RequestMapping
 //    @Secured("ROLE_READ")
-    public String getSecret(Principal principal) {
-        System.out.println(principal.getName());
+    public String getSecret(OAuth2Authentication auth) {
+        final String token = ((OAuth2AuthenticationDetails) auth.getDetails()).getTokenValue();
+        System.out.println(token);
         return "jeg er så glad i dyr";
     }
 }
