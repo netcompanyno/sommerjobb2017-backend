@@ -16,26 +16,26 @@ public class SecretDao {
         this.namedTemplate = namedTemplate;
     }
 
-    public void create(final int userId) {
+    public void create(final String email) {
         namedTemplate.update(
-                "INSERT INTO secret (user_id) VALUES (:user_id)",
-                new MapSqlParameterSource().addValue("user_id", userId));
+                "INSERT INTO secret (email) VALUES (:email)",
+                new MapSqlParameterSource().addValue("email", email));
     }
 
-    public void edit(final int userId, final Secret secret) {
+    public void edit(final String email, final Secret secret) {
         namedTemplate.update(
-                "UPDATE secret SET secret = :secret WHERE user_id = :user_id",
+                "UPDATE secret SET secret = :secret WHERE email = :email",
                 new MapSqlParameterSource()
                         .addValue("secret", secret.getSecret())
-                        .addValue("user_id", userId));
+                        .addValue("email", email));
     }
 
-    public Secret get(final int userId) {
+    public Secret get(final String email) {
         return DataAccessUtils.requiredSingleResult(
                 namedTemplate.query(
-                        "SELECT * FROM secret WHERE user_id = :user_id",
+                        "SELECT * FROM secret WHERE email = :email",
                         new MapSqlParameterSource()
-                                .addValue("user_id", userId),
+                                .addValue("email", email),
                         (rs, i) -> ImmutableSecret
                                 .builder()
                                 .secret(rs.getString("secret"))

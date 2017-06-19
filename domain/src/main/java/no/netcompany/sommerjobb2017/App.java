@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 
 @SpringBootApplication
+// Uncomment to enable @Secured for authorization based on authorities (roles).
 //@EnableGlobalMethodSecurity(securedEnabled = true)
 @EnableOAuth2Sso
 public class App {

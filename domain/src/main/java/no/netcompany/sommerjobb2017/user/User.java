@@ -7,8 +7,6 @@ import org.immutables.value.Value;
  */
 @Value.Immutable
 public interface User {
-    int getId();
-
     String getEmail();
 
     String getName();

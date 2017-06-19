@@ -1,7 +1,7 @@
 package no.netcompany.sommerjobb2017.secret;
 
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
-import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationDetails;
+import no.netcompany.sommerjobb2017.user.User;
+import no.netcompany.sommerjobb2017.util.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,17 +11,17 @@ import java.util.Objects;
 @RequestMapping("/api/secret")
 public class SecretRest {
     private final SecretService secretService;
+    private final UserService userService;
 
-    public SecretRest(final SecretService secretDao) {
+    public SecretRest(final SecretService secretDao, final UserService userService) {
+        Objects.requireNonNull(userService);
+        this.userService = userService;
         Objects.requireNonNull(secretDao);
         this.secretService = secretDao;
     }
 
     @RequestMapping
-//    @Secured("ROLE_READ")
-    public String getSecret(OAuth2Authentication auth) {
-        final String token = ((OAuth2AuthenticationDetails) auth.getDetails()).getTokenValue();
-        System.out.println(token);
-        return "jeg er så glad i dyr";
+    public User getSecret() {
+        return userService.getSignedInUser();
     }
 }
