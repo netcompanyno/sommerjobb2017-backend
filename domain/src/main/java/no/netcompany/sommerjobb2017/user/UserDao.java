@@ -29,8 +29,4 @@ public class UserDao {
                                 .name(rs.getString("name"))
                                 .build()));
     }
-
-    // TODO: TASK 1.2
-
-//    public void create(...) {}
 }
