@@ -18,6 +18,6 @@ public class SecretService {
     }
 
     public Secret getSecretForUser(final User user) {
-        return secretDao.get(user.getEmail());
+        return secretDao.get(user.getId());
     }
 }

@@ -16,12 +16,12 @@ public class SecretDao {
         this.namedTemplate = namedTemplate;
     }
 
-    public Secret get(final String email) {
+    public Secret get(final int userId) {
         return DataAccessUtils.requiredSingleResult(
                 namedTemplate.query(
-                        "SELECT * FROM secret WHERE email = :email",
+                        "SELECT * FROM secrets WHERE user_id = :user_id",
                         new MapSqlParameterSource()
-                                .addValue("email", email),
+                                .addValue("user_id", userId),
                         (rs, i) -> ImmutableSecret
                                 .builder()
                                 .secret(rs.getString("secret"))

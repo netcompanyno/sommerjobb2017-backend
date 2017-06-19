@@ -22,9 +22,10 @@ public class UserDao {
     public User getByEmail(final String email) {
         return DataAccessUtils.requiredSingleResult(
                 namedTemplate.query(
-                        "SELECT * FROM \"user\" WHERE email = :email",
+                        "SELECT * FROM users WHERE email = :email",
                         new MapSqlParameterSource().addValue("email", email),
                         (rs, i) -> ImmutableUser.builder()
+                                .id(rs.getInt("id"))
                                 .email(rs.getString("email"))
                                 .name(rs.getString("name"))
                                 .build()));
