@@ -18,10 +18,6 @@ public class UserService {
         this.userDao = userDao;
     }
 
-    public void create(final User user) {
-
-    }
-
     public User getSignedInUser() {
         final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return userDao.getByEmail(auth.getName());

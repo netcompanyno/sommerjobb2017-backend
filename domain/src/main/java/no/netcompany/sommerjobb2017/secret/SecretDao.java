@@ -16,20 +16,6 @@ public class SecretDao {
         this.namedTemplate = namedTemplate;
     }
 
-    public void create(final String email) {
-        namedTemplate.update(
-                "INSERT INTO secret (email) VALUES (:email)",
-                new MapSqlParameterSource().addValue("email", email));
-    }
-
-    public void edit(final String email, final Secret secret) {
-        namedTemplate.update(
-                "UPDATE secret SET secret = :secret WHERE email = :email",
-                new MapSqlParameterSource()
-                        .addValue("secret", secret.getSecret())
-                        .addValue("email", email));
-    }
-
     public Secret get(final String email) {
         return DataAccessUtils.requiredSingleResult(
                 namedTemplate.query(
