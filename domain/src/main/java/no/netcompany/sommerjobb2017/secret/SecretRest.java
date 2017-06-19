@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("secret")
+@RequestMapping("/api/secret")
 public class SecretRest {
     private final SecretService secretService;
 

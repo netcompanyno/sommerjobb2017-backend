@@ -10,5 +10,4 @@ security.oauth2:
     access-token-uri: http://localhost:8090/oauth/token
     user-authorization-uri: http://localhost:8090/oauth/authorize
 
-server.context-path: /api
-
+server.session.cookie.name: APPSESSIONID
