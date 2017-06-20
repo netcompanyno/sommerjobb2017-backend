@@ -33,15 +33,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .authoritiesByUsernameQuery("" +
                         "SELECT u.email AS username, role AS authority " +
-                        "FROM user_role ur " +
-                        "  JOIN \"user\" u ON u.id = ur.user_id " +
+                        "FROM user_roles ur " +
+                        "  JOIN users u ON u.id = ur.user_id " +
                         "WHERE u.email = ?")
                 .usersByUsernameQuery("" +
                         "SELECT " +
                         "  email         AS username, " +
                         "  password_hash AS password, " +
                         "  enabled " +
-                        "FROM \"user\" " +
+                        "FROM users " +
                         "WHERE email = ?");
     }
 
