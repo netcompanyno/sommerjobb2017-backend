@@ -18,6 +18,6 @@ public class UserAuthenticatedHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(final HttpServletRequest request,
                                         final HttpServletResponse response,
                                         final Authentication authentication) throws IOException, ServletException {
-
+        response.sendRedirect("/");
     }
 }
