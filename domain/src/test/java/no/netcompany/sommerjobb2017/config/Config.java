@@ -23,7 +23,10 @@ import static org.springframework.context.annotation.FilterType.ASSIGNABLE_TYPE;
 @SpringBootApplication
 @ComponentScan(
         basePackages = "no.netcompany.sommerjobb2017",
-        excludeFilters = {@Filter(type = ASSIGNABLE_TYPE, value = App.class)})
+        excludeFilters = {
+                @Filter(type = ASSIGNABLE_TYPE, value = OAuth2ClientConfig.class),
+                @Filter(type = ASSIGNABLE_TYPE, value = App.class)
+        })
 public class Config {
     private static final String DB_USERNAME = "sa";
     private static final String DB_PASSWORD = "";

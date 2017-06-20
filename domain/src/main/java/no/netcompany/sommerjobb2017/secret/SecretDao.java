@@ -22,8 +22,7 @@ public class SecretDao {
                         "SELECT * FROM secrets WHERE user_id = :user_id",
                         new MapSqlParameterSource()
                                 .addValue("user_id", userId),
-                        (rs, i) -> ImmutableSecret
-                                .builder()
+                        (rs, i) -> ImmutableSecret.builder()
                                 .secret(rs.getString("secret"))
                                 .build()));
     }
