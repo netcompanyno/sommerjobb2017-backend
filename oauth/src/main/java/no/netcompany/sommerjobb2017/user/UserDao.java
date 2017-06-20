@@ -21,7 +21,7 @@ public class UserDao {
 
     public String getPasswordHash(final String email) {
         return namedTemplate.queryForObject(
-                "SELECT password_hash FROM \"user\" WHERE email = :email",
+                "SELECT password_hash FROM users WHERE email = :email",
                 new MapSqlParameterSource().addValue("email", email),
                 String.class);
     }
@@ -29,7 +29,7 @@ public class UserDao {
     public User getByEmail(final String email) {
         return DataAccessUtils.requiredSingleResult(
                 namedTemplate.query(
-                        "SELECT * FROM \"user\" WHERE email = :email",
+                        "SELECT * FROM users WHERE email = :email",
                         new MapSqlParameterSource().addValue("email", email),
                         (rs, i) -> ImmutableUser.builder()
                                 .id(rs.getInt("id"))
@@ -40,7 +40,7 @@ public class UserDao {
 
     public void changePassword(final String email, final String newPasswordHash) {
         namedTemplate.update(
-                "UPDATE \"user\" SET password_hash = :password_hash WHERE email = :email",
+                "UPDATE users SET password_hash = :password_hash WHERE email = :email",
                 new MapSqlParameterSource()
                         .addValue("password_hash", newPasswordHash)
                         .addValue("email", email));
