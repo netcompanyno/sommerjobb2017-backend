@@ -1,0 +1,7 @@
+users:
+  - id: 1
+    name: Hest Hestesen
+    email: test@hest.no
+  - id: 2
+    name: Test Testesen
+    email: test2@test.no

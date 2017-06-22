@@ -3,6 +3,8 @@ package no.netcompany.sommerjobb2017.user;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.util.Objects;
@@ -29,5 +31,19 @@ public class UserDao {
                                 .email(rs.getString("email"))
                                 .name(rs.getString("name"))
                                 .build()));
+    }
+
+    public int create(final OAuth2User user) {
+        final KeyHolder keyHolder = new GeneratedKeyHolder();
+
+        namedTemplate.update(
+                "INSERT INTO users (email, name) VALUES (:email, :name)",
+                new MapSqlParameterSource()
+                        .addValue("email", user.getEmail())
+                        .addValue("name", user.getName()),
+                keyHolder,
+                new String[]{"id"});
+
+        return keyHolder.getKey().intValue();
     }
 }

@@ -26,4 +26,19 @@ public class SecretDao {
                                 .secret(rs.getString("secret"))
                                 .build()));
     }
+
+    public void create(final int userId) {
+        namedTemplate.update(
+                "INSERT INTO secrets (user_id, secret) VALUES (:user_id, '')",
+                new MapSqlParameterSource()
+                        .addValue("user_id", userId));
+    }
+
+    public void change(final int userId, final Secret secret) {
+        namedTemplate.update(
+                "UPDATE secrets SET secret = :secret WHERE user_id = :user_id",
+                new MapSqlParameterSource()
+                        .addValue("user_id", userId)
+                        .addValue("secret", secret.getSecret()));
+    }
 }

@@ -20,4 +20,12 @@ public class SecretService {
     public Secret getSecretForUser(final User user) {
         return secretDao.get(user.getId());
     }
+
+    public void create(final int userId) {
+        secretDao.create(userId);
+    }
+
+    public void changeSecret(final int userId, final Secret secret) {
+        secretDao.change(userId, secret);
+    }
 }
